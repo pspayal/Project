@@ -1,0 +1,74 @@
+﻿@model List<MVC_Midterm.Models.Student>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+</div>
+<h2>List of Students</h2>
+<table class=" table table-bordered  table-hover">
+    <tr style="background-color: #B0C4DE">
+        <th>ID</th>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>
+            CourseID
+        </th>
+        <th>
+            CourseEnrolledDate 
+        </th>
+        <th>
+            CourseStatus
+        </th>
+        <th>
+            Grade
+        </th>
+        <th>
+            Edit or Delete
+        </th>
+
+    </tr>
+    @foreach (var student in Model)
+    {
+        <tr>
+            <td>@student.ID</td>
+            <td>@student.FirstName</td>
+            <td>@student.LastName</td>
+            <td>
+                @student.CourseID
+            </td>
+            <td>
+                @student.CourseEnrolledDate
+            </td>
+
+            @if (student.CourseStatus == 0)
+            {
+                <td>
+                    In Progress
+                </td>
+            }
+            else
+            {
+                <td>
+                    Completed
+                </td>
+            }
+
+            <td>
+                @student.Grade
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = student.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = student.ID })
+            </td>
+
+        </tr>
+
+
+    }
+</table>

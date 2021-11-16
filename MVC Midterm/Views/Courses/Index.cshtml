@@ -1,0 +1,39 @@
+﻿@model List<MVC_Midterm.Models.Course>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+</div>
+<h2>List of Courses</h2>
+<table class=" table table-bordered table-hover">
+    <tr style="background-color: #B0C4DE">
+        <th>ID</th>
+        <th>Name</th>
+        <th>Discription</th>
+        <th>TutorName</th>
+        <th>CourseRating</th>
+        <th>Edit or Delete</th>
+    </tr>
+    @foreach (var Course in Model)
+    {
+        <tr>
+            <td>@Course.ID</td>
+            <td>@Course.Name</td>
+            <td>@Course.Discription</td>
+            <td>@Course.TutorName</td>
+            <td>@Course.CourseRating
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = Course.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = Course.ID })
+            </td>
+
+        </tr>
+
+
+    }
+</table>

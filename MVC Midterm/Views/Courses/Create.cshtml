@@ -1,0 +1,38 @@
+﻿@model MVC_Midterm.Models.Course
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>CreateNew</h2>
+@using (Html.BeginForm("Create", "Courses"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+       </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Discription)
+        @Html.TextBoxFor(m => m.Discription, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.TutorName)
+        @Html.TextBoxFor(m => m.TutorName, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.CourseRating)
+        @Html.TextBoxFor(m => m.CourseRating, new { @class = "form-control" })
+   </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", "Course")
+</div>
+
+
+
