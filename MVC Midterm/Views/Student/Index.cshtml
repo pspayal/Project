@@ -6,7 +6,14 @@
 
 <div>
     <p>
-        @Html.ActionLink("Create New", "Create")
+
+
+    </p>
+</div>
+<div>
+    <p>
+        <button style="text-shadow" onclick="location.href='@Url.Action("Create")';return false;">Add Student</button>
+
     </p>
 </div>
 <h2>List of Students</h2>
@@ -19,7 +26,7 @@
             CourseID
         </th>
         <th>
-            CourseEnrolledDate 
+            CourseEnrolledDate
         </th>
         <th>
             CourseStatus

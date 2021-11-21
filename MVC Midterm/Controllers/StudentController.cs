@@ -76,12 +76,18 @@ namespace MVC_Midterm.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Students.Find(id);
-            if (student == null)
+            //Student student = db.Students.Find(id);
+            var Coursesval = db.Courses.ToList();
+            var StudentViewModel = new StudentViewModel()
+            {
+                Courses = Coursesval,
+                Student= db.Students.Find(id)
+            };
+            if (StudentViewModel.Student == null)
             {
                 return HttpNotFound();
             }
-            return View(student);
+            return View(StudentViewModel);
         }
 
         // Post: Edit student

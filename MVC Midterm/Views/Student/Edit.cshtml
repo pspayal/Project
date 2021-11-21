@@ -1,4 +1,4 @@
-﻿@model MVC_Midterm.Models.Student
+﻿@model MVC_Midterm.View_Models.StudentViewModel
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,35 +7,40 @@
 <h2>Edit Student</h2>
 @using (Html.BeginForm("Edit", "Student"))
 {
-    @Html.HiddenFor(m => m.ID)
+    @Html.HiddenFor(m => m.Student.ID)
     <div class="form-group">
-        @Html.LabelFor(m => m.FirstName)
-        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control"  })
-        @Html.ValidationMessageFor(m=>m.FirstName, "", new { @class= "text-danger"})
+        @Html.LabelFor(m => m.Student.FirstName)
+        @Html.TextBoxFor(m => m.Student.FirstName, new { @class = "form-control"  })
+        @Html.ValidationMessageFor(m=> m.Student.FirstName, "", new { @class= "text-danger"})
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.LastName)
-        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+        @Html.LabelFor(m => m.Student.LastName)
+        @Html.TextBoxFor(m => m.Student.LastName, new { @class = "form-control" })
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.CourseID)
-      
-        @Html.TextBoxFor(m => m.CourseID, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.CourseID, "", new { @class = "text-danger" })
+        @Html.LabelFor(m => m.Student.CourseID)
+
+        @Html.DropDownListFor(m => m.Student.CourseID, new SelectList(Model.Courses, "ID", "Name"), "Select Course", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Student.CourseID, "", new { @class = "text-danger" })
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.CourseEnrolledDate)
+        @Html.LabelFor(m => m.Student.CourseEnrolledDate)
         <input class="form-control" asp-for="CourseEnrolledDate" type="date" />
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.CourseStatus)
-        @Html.TextBoxFor(m => m.CourseStatus, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.CourseStatus, "", new { @class = "text-danger" })
+        @Html.LabelFor(m => m.Student.CourseStatus)
+        @Html.DropDownListFor(m => m.Student.CourseStatus, new List<SelectListItem>
+   {
+        new SelectListItem{ Text="In Progress", Value = "0" },
+        new SelectListItem{ Text="Completed", Value = "1" }
+   }, new { @class = "form-control" })
+
+        @Html.ValidationMessageFor(m => m.Student.CourseStatus, "", new { @class = "text-danger" })
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Grade)
-        @Html.TextBoxFor(m => m.Grade, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Grade, "", new { @class = "text-danger" })
+        @Html.LabelFor(m => m.Student.Grade)
+        @Html.TextBoxFor(m => m.Student.Grade, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Student.Grade, "", new { @class = "text-danger" })
     </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">

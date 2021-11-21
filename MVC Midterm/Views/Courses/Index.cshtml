@@ -3,10 +3,16 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <div>
     <p>
-        @Html.ActionLink("Create New", "Create")
+
+
+    </p>
+</div>
+<div>
+    <p>
+        <button style="text-shadow" onclick="location.href='@Url.Action("Create")';return false;">Add Course</button>
+
     </p>
 </div>
 <h2>List of Courses</h2>
